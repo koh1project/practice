@@ -1,48 +1,47 @@
-6th July 2020
+6th July 2020  
 
 **Mobile friendly:**  
-Googleが全世界で実装したアルゴリズム
-
+It's the algorithm which was invented by Google.  
 
 **Mobile friendly test** \
-https://search.google.com/test/mobile-friendly
+https://search.google.com/test/mobile-friendly  
 
-**要素**  
-HTMLタグとその間入る内容物を含んだひとまとまり  
+**Element**  
+A set of HTML tags and the contents that are inserted between the tags.  
 
-**属性**  
-個々のタグに対して何らかの性質を与えるもの。  
-属性を使用する場合は、値もセットで記述する。 
+**Attribute**  
+It gives tags some properties.  
+If attributes are used, the values are also described.   
 
 **<div>**  
-それ自体には特に意味を持たず、見出しや段落など各要素をひとまとめにする際に使用する。  
+They don't have meaning in paticular.  
+Tags of div are used for putting headlines and paragraphs together  
 
 **<span>**  
-文書内でピンポイントに装飾する際に使用。 
+It is used for decolating to paticular points in sentences.  
 
 **description** \
 \<meta name=description" content="Text information">  
-ページの内容を端的にまとめたもので、Googleの検索結果の表示に利用されることがある。  
+It is a short summary of the contents of the page and it is sometimes utilized in case that the page is shown in Google searching.  
 
-**OGP**  
-SNSでページがシェアされた時に、そのページのタイトルやURL、概要やアイキャッチ画像を指定したとおりに表示させる仕組み。
-property="og:-----  でメタタグ内に定型を入力する。  
-\<meta property="og:url" content="ページのURL">  
-\<meta property="og:title" content="ページのタイトル">  
-\<meta property="og:description" content="ページの要約文">  
-\<meta property="og:image" content="サムネイル画像のURL">  
+**OGP(Open Graph Protocol)**  
+It is a gimmick that the title or URL, summary, or eye-catch when a page is shared by SNS.
+The descriptions are usually put in meta tags as a set of boilerplate.
+\<meta property="og:url" content="URL">  
+\<meta property="og:title" content="the Title">  
+\<meta property="og:description" content="Summary">  
+\<meta property="og:image" content="URL of a thumbnail image">  
 
 **Alt text**  
-代替テキストが無いと、検索エンジンは画像を認識できない。  
+Search engine can notrecognize an image if an alt text doesn't exist.
 
 **_blank**  
-aタグtarget属性の一つで、新規タブでリンクを開く。  
-
-**複数の要素全体にリンク設定**  
-div要素などで囲んでから、その外側にリンクを付ける。  
-
-**id属性へのリンク**  
-href内に#ID の形式を指定する。  
-ファイルの場所が違う場合は、ファイルまでのパスを指定後#IDとする。  
+It'a one of the attributes of tartet and it opens the link in a new tab.  
 
 
+**Setting a link outside of multiple elements**  
+Firstly, the elements are enclosed by comprehensive tags, such as div. Then, the link is attached out of the tags.
+
+**Link to id elements**  
+To identify #ID style in the href.  
+If the place of the linked file is not the same the page, the path of the file designated at first and the #ID is put after the path.  
