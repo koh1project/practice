@@ -74,4 +74,7 @@ They are CSS classes used to define the state of an element.
 They target elements which can’t be targeted with combinators, or simple selectors like id or class.  
 They are utilized to select elements which based on their attributes, states, and relative position.  
 
+**letter-spacing**  
+It specifies spaces between letters.  
+
 
