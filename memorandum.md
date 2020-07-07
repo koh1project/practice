@@ -22,7 +22,7 @@ They don't have meaning in paticular.
 Tags of div are used for putting headlines and paragraphs together  
 
 **<span>**  
-It is used for decolating to paticular points in sentences.  
+It is used for decorating to paticular points in sentences.  
 
 **description** \
 \<meta name=description" content="Text information">  
@@ -64,7 +64,7 @@ It uses in a form. It links a name of constituent of the form and input areas.
 Points to be applied CSS  
 
 **Property**  
-To describe how to decolate.  
+To describe how to decorate.  
 
 **Value**  
 Degrees of a property.  
