@@ -1,5 +1,9 @@
-6th July 2020  
+[6th July 2020th](#06072020)  
+[7th July 2020th](#07072020)  
 
+
+### 6th July 2020
+### 06072020
 **Mobile friendly:**  
 It's the algorithm which was invented by Google.  
 
@@ -49,8 +53,8 @@ If the place of the linked file is not the same the page, the path of the file d
   
   
 ___
-7th July 2020  
-  
+### 7th July 2020
+### 07072020
   
 
 **Label element**  
@@ -127,5 +131,10 @@ Box size = content(width, height) + padding + border + margin.
 calc(); is feasible.  e.g. width: calc(100% / 7);  padding calc(1em - 5px);  
 
 
-
+**Flex box(Flexible Box Layout Module)**  
+It's a one of the functions of CSS and it provides flexible layout, such as horizontal.  
+  
+**Position property**  
+It is a fucnction which controls display positions. The element is inserted according to stuructures of HTML.  
+  
 
