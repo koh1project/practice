@@ -56,4 +56,22 @@ ___
 **Label element**  
 It uses in a form. It links a name of constituent of the form and input areas.  
 
+**Selector**  
+Points to be applied CSS  
+
+**Property**  
+To describe how to decolate.  
+
+**Value**  
+Degrees of a property.  
+
+**Priority of CSS**  
+ID_selector > Class_selector > Type_selector  
+If a style is defined in a HTML tag, the style comes before any other styles.  
+
+**Psuedo-class**  
+They are CSS classes used to define the state of an element.  
+They target elements which can’t be targeted with combinators, or simple selectors like id or class.  
+They are utilized to select elements which based on their attributes, states, and relative position.  
+
 
