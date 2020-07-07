@@ -77,4 +77,55 @@ They are utilized to select elements which based on their attributes, states, an
 **letter-spacing**  
 It specifies spaces between letters.  
 
+**Block level**
+They can be specified width and height.  
+If the width does not defined, it becomes the same width to the parent element.   
+You can specify all aspects of margin and padding.  
+New lines are inserted around the block.  
+
+Block level tags:
+- p
+- h1 - h6
+- div
+- ul
+- ol
+- li
+  
+**Inline level**
+The width and height values can not be defined. They defined according to the number of words or the size of contents.  
+The upside and downside of margin and padding can not be defined.  
+Those of left and right side are applicable.  
+
+Inline level tags:
+- a
+- img
+- span
+- strong
+
+**Margin**  
+The above and below margins offsets each other.  
+
+**Box size**  
+Box size = content(width, height) + padding + border + margin.  
+  
+  box-sizing="border-box":  
+  width(padding left + padding right + border left + border right) + margin left + margin right  
+=> The left and right padding and left and right border are contained in the value of the width. Then, the both left and right margin are added.  
+  
+  The difference between context-box and border-box:  
+  It is whether the valu of the width contains paddings and borders or not.
+  
+|                   |content-box|box-sizing|
+|-------------------|-----------|----------|
+|content            |     o     |     o    |
+|property of padding|     x     |     o    |
+|property of border |     x     |     o    |
+|property of margin |     x     |     x    |
+  
+
+**calc function in CSS**  
+calc(); is feasible.  e.g. width: calc(100% / 7);  padding calc(1em - 5px);  
+
+
+
 
