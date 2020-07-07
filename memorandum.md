@@ -45,3 +45,15 @@ Firstly, the elements are enclosed by comprehensive tags, such as div. Then, the
 **Link to id elements**  
 To identify #ID style in the href.  
 If the place of the linked file is not the same the page, the path of the file designated at first and the #ID is put after the path.  
+  
+  
+  
+___
+7th July 2020  
+  
+  
+
+**Label element**  
+It uses in a form. It links a name of constituent of the form and input areas.  
+
+
