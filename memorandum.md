@@ -1,5 +1,6 @@
 [6th July 2020th](#06072020)  
 [7th July 2020th](#07072020)  
+[8th July 2020th](#08072020)  
 
 
 ### 6th July 2020
@@ -25,17 +26,20 @@ Tags of div are used for putting headlines and paragraphs together
 It is used for decorating to paticular points in sentences.  
 
 **description** \
-\<meta name=description" content="Text information">  
+```HTML
+<meta name=description" content="Text information">  
+```
 It is a short summary of the contents of the page and it is sometimes utilized in case that the page is shown in Google searching.  
 
 **OGP(Open Graph Protocol)**  
 It is a gimmick that the title or URL, summary, or eye-catch when a page is shared by SNS.
 The descriptions are usually put in meta tags as a set of boilerplate.
-\<meta property="og:url" content="URL">  
-\<meta property="og:title" content="the Title">  
-\<meta property="og:description" content="Summary">  
-\<meta property="og:image" content="URL of a thumbnail image">  
-
+```html
+<meta property="og:url" content="URL">  
+<meta property="og:title" content="the Title">  
+<meta property="og:description" content="Summary">  
+<meta property="og:image" content="URL of a thumbnail image">  
+````
 **Alt text**  
 Search engine can notrecognize an image if an alt text doesn't exist.
 
@@ -137,4 +141,10 @@ It's a one of the functions of CSS and it provides flexible layout, such as hori
 **Position property**  
 It is a fucnction which controls display positions. The element is inserted according to stuructures of HTML.  
   
+
+8th July 2020
+### 08072020
+
+**Cursor**  
+It is property of CSS which specifies the type of mouse cursor.  
 
