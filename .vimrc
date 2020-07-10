@@ -13,7 +13,26 @@ set cursorline
 set showmatch
 set encoding=utf-8
 set autoread
-
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+set nobackup
+set noswapfile
+set autoread
+set hidden
+set showcmd
+set cursorcolumn
+set virtualedit=onemore
+set visualbell
+set showmatch
+set laststatus=2
+set wildmode=list:longest
+nnoremap j gj
+nnoremap k gk
+set list listchars=tab:\▸\-
+set wildmenu
+set shellslash
+set clipboard=unnamed,autoselect
 
 if has('vim_starting')
         set rtp+=$HOME/.vim/bundle/neobundle.vim/
@@ -154,3 +173,23 @@ function! OpenBrowser (url)
     execute 'r !start ' . a:url . ' -dump -dump-width ' . winwidth(0)
 endfunction
 
+
+" HTML/XML閉じタグ自動補完
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+augroup END
+
+" 編集箇所のカーソルを記憶
+if has("autocmd")
+  augroup redhat
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+  augroup END
+endif
