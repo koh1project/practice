@@ -1,6 +1,7 @@
 [6th July 2020th](#06072020)  
 [7th July 2020th](#07072020)  
 [8th July 2020th](#08072020)  
+[10th July 2020th](#10072020)  
 
 
 ### 6th July 2020
@@ -148,3 +149,15 @@ It is a fucnction which controls display positions. The element is inserted acco
 **Cursor**  
 It is property of CSS which specifies the type of mouse cursor.  
 
+10th July 2020
+### 10072020
+
+**Link check service**  
+To check if the site contains link disconnection.  
+https://validator.w3.org/checklink  
+
+**HTML syntax check service**  
+https://validator.w3.org/  
+
+**CSS syntax check service**  
+https://jigsaw.w3.org/css-validator/
