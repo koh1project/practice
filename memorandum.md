@@ -2,6 +2,7 @@
 [7th July 2020th](#07072020)  
 [8th July 2020th](#08072020)  
 [10th July 2020th](#10072020)  
+[14th July 2020](#14072020)  
 
 
 ### 6th July 2020
@@ -161,3 +162,9 @@ https://validator.w3.org/
 
 **CSS syntax check service**  
 https://jigsaw.w3.org/css-validator/
+
+14th July 2020
+### 14072020
+**Shortcut of Google developer tool**  
+alt click on elements : Expand recursively  
+
