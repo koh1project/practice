@@ -2,14 +2,21 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
     body {
         font-family: 'Roboto', sans-serif;
-        font-size: 14px;
+        font-size: 16px;
     }
     /* header */
+    
     nav {
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
         margin: 0 150px;
+    }
+    nav a {
+        color: #000000;
+    }
+    nav a:hover {
+        color: #000000;
     }
     nav ul {
         display: flex;
@@ -21,17 +28,29 @@
     nav li {
         padding: 15px 5px 0;
     }
-    #clover{
+    #clover {
         background-color: rgba(220, 220, 220, 0.836);
         border-radius: 100%;
     }
     /* main */
-    main{
+    
+    main {
         padding: 0;
+        margin: 0;
+        max-width: 100%;
+    }
+    main .banner {
+        margin: 0;
+    }
+    /* paragraph */
+    
+    #paragraph {
+        margin: 0 100px;
     }
     /* footer */
+    
     footer {
-        color:#ffffff;
+        color: #ffffff;
         background-color: #000000;
-        padding: 10px 0 0 0 ;
+        padding: 10px 0 0 0;
     }
