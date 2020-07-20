@@ -1,4 +1,5 @@
     @charset "UTF-8";
+    /* Import Google font */
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
     body {
         font-family: 'Roboto', sans-serif;
@@ -51,28 +52,51 @@
         margin-right: -50%; */
     }
     /* paragraph */
-    
-    #paragraph {
-        /* margin: 0 100px; */
-    }
     /* table */
     
     table {
         width: 100%;
-        background-color: #e7e0e0;
+        background-color: rgba(220, 220, 220, 0.836);
+        ;
         font-size: 17px;
-        border-collapse:collapse;
     }
     table .first-column {
         width: 70%;
     }
-    thead th:first-child{
-        color:orange;
+    thead th:first-child {
+        color: orange;
     }
     tbody th {
         text-align: left;
     }
+    /* form */
+    
+    form {
+        display: block;
+        text-align: center;
+    }
+    form ul {
+        list-style: none;
+    }
+    form * {
+        margin: 10px;
+    }
+    input[type="email"],
+    form textarea {
+        background-color: rgb(226, 226, 226);
+    }
+    form textarea {
+        resize: vertical;
+        overflow: auto;
+    }
+    form input[type="submit"] {
+        background-color: black;
+        border-radius: 0;
+        position: relative;
+        right: 0
+    }
     /* footer */
+    
     footer {
         color: #ffffff;
         background-color: #000000;
