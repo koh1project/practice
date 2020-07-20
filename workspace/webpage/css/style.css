@@ -49,26 +49,38 @@
         margin-right: -50vw;
         /* margin-left: -50%;
         margin-right: -50%; */
-
     }
     /* paragraph */
     
     #paragraph {
         /* margin: 0 100px; */
     }
-    /* footer */
+    /* table */
     
+    table {
+        width: 100%;
+        background-color: #e7e0e0;
+        font-size: 17px;
+        border-collapse:collapse;
+    }
+    table .first-column {
+        width: 70%;
+    }
+    thead th:first-child{
+        color:orange;
+    }
+    tbody th {
+        text-align: left;
+    }
+    /* footer */
     footer {
         color: #ffffff;
         background-color: #000000;
         padding: 10px 0 0 0;
-
-
         width: 100vw;
         position: relative;
         left: 50%;
         right: 50%;
         margin-left: -50vw;
         margin-right: -50vw;
-
     }
