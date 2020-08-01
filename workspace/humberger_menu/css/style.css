@@ -1,10 +1,8 @@
 @charset "UTF-8";
-
 * {
     box-sizing: border-box;
 }
-
-.nav-list {
+#nav-list {
     position: absolute;
     top: 0;
     left: 0;
@@ -17,14 +15,12 @@
     background: rgba(125, 125, 125, 0.95);
     text-align: center;
 }
-
-.nav-list>li a {
+#nav-list>li a {
     display: block;
     padding: 10px 1em;
     text-decoration: none;
     color: white;
 }
-
 .nav-toggle-open {
     background: none;
     position: relative;
@@ -32,7 +28,6 @@
     right: 0;
     line-height: 45px;
     padding: 5px 15px 0px 15px;
-    /* color: #999; */
     border: 0;
     font-size: 1.4em;
     font-weight: bold;
@@ -40,14 +35,12 @@
     outline: none;
     z-index: 2;
 }
-
 .nav-toggle-close {
     background: none;
     position: relative;
     top: 0px;
     right: 0;
     padding: 7px 15px 0px 15px;
-    /* color: #999; */
     border: 0;
     font-size: 3em;
     line-height: 65px;
@@ -55,4 +48,8 @@
     cursor: pointer;
     outline: none;
     z-index: 1;
+}
+.nav-list-hidden {
+    font-size: 30em;
+    visibility: hidden;
 }

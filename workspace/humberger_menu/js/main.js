@@ -26,6 +26,9 @@ class HamburgerButton extends HTMLElement {
         <button type = "button"
         class = "shadow-nav-toggle-open"> &#9776;</button>
         `;
+
+        shadow.addEventListener(`click`, () => navList());
+
     }
 }
 
@@ -57,12 +60,12 @@ class CloseButton extends HTMLElement {
         class = "shadow-nav-toggle-close" > &#735;</button>
         `;
 
-        shadow.addEventListener(`click`, (e) => alert("Inner target: " + e.target.tagName));
+
+
+        shadow.addEventListener(`click`, () => navList());
 
     }
 }
-
-
 
 customElements.define('hamburger-button', HamburgerButton);
 customElements.define('close-button', CloseButton);
@@ -70,23 +73,29 @@ customElements.define('close-button', CloseButton);
 
 
 
+const navList = () => {
+    const nav = document.querySelector('#nav-list');
+    nav.classList.toggle(`nav-list-hidden`);
+};
 
-$(document).ready(function() {
 
-    $(".nav-toggle-close").hide();
-    $(".nav-list").hide();
-    $(".nav-toggle-open").click(function() {
-        $(".nav-list").slideToggle("slow", function() {
-            $(".nav-toggle-open").hide();
-            $(".nav-toggle-close").show();
-        });
-    });
 
-    $(".nav-toggle-close").click(function() {
-        $(".nav-list").slideToggle("slow", function() {
-            $(".nav-toggle-close").hide();
-            $(".nav-toggle-open").show();
-        });
-    });
+// $(document).ready(function() {
 
-});
+//     $(".nav-toggle-close").hide();
+//     // $("#nav-list").hide();
+//     $(".nav-toggle-open").click(function() {
+//         $("#nav-list").slideToggle("slow", function() {
+//             $(".nav-toggle-open").hide();
+//             $(".nav-toggle-close").show();
+//         });
+//     });
+
+//     $(".nav-toggle-close").click(function() {
+//         // $("#nav-list").slideToggle("slow", function() {
+//         //     $(".nav-toggle-close").hide();
+//         //     $(".nav-toggle-open").show();
+//         // });
+//     });
+
+// });
