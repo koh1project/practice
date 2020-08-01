@@ -1,6 +1,6 @@
-const shadowRoot = document.getElementById('example').attachShadow({
-    mode: 'open'
-});
+// const shadowRoot = document.getElementById('example').attachShadow({
+//     mode: 'open'
+// });
 
 
 class HamburgerButton extends HTMLElement {
