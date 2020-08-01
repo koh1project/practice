@@ -1,7 +1,6 @@
 class HamburgerButton extends HTMLElement {
     constructor() {
         super();
-
         const shadow = this.attachShadow({
             mode: `open`
         });
@@ -9,9 +8,9 @@ class HamburgerButton extends HTMLElement {
         <style>
         button {
             background: none;
-            position: relative;
+            position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             line-height: 45px;
             background-color:transparent;
             padding: 5px 15px 0px 15px;
@@ -27,8 +26,7 @@ class HamburgerButton extends HTMLElement {
         class = "shadow-nav-toggle-open"> &#9776;</button>
         `;
 
-        shadow.addEventListener(`click`, () => navList());
-
+        shadow.addEventListener(`click`, () => onClickMenuButton());
     }
 }
 
@@ -43,9 +41,9 @@ class CloseButton extends HTMLElement {
         <style>
         button {
             background: none;
-            position: relative;
+            position: absolute;
             top: 0px;
-            right: 0px;
+            left: 0px;
             padding: 7px 15px 0px 15px;
             border: 0;
             font-size: 3em;
@@ -59,24 +57,31 @@ class CloseButton extends HTMLElement {
         <button type = "button"
         class = "shadow-nav-toggle-close" > &#735;</button>
         `;
-
-
-
-        shadow.addEventListener(`click`, () => navList());
-
+        shadow.addEventListener(`click`, () => onClickMenuButton());
     }
 }
 
 customElements.define('hamburger-button', HamburgerButton);
 customElements.define('close-button', CloseButton);
 
+const closeButton = document.querySelector(`#shadow-nav-toggle-close`);
+const hamburgerButton = document.querySelector(`#shadow-nav-toggle-open`);
+const nav = document.querySelector('#nav-list');
+
+closeButton.classList.toggle(`hidden`);
+nav.classList.toggle(`nav-list-hidden`);
 
 
-
-const navList = () => {
-    const nav = document.querySelector('#nav-list');
+const onClickMenuButton = () => {
     nav.classList.toggle(`nav-list-hidden`);
-};
+    hamburgerButton.classList.toggle(`hidden`);
+    closeButton.classList.toggle(`hidden`);
+
+    const test = customElements.get(`hamburger-button`);
+}
+
+
+
 
 
 
