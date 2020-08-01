@@ -1,31 +1,74 @@
-// const shadowRoot = document.getElementById('example').attachShadow({
-//     mode: 'open'
-// });
-
-
 class HamburgerButton extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `<button type="button" 
-        id="nav-toggle-open" class="nav-toggle-open">&#9776;</button>
+    constructor() {
+        super();
+
+        const shadow = this.attachShadow({
+            mode: `open`
+        });
+        shadow.innerHTML = `
         <style>
+        button {
             background: none;
             position: relative;
             top: 0;
             right: 0;
-            line - height: 45 px;
-            padding: 5 px 15 px 0 px 15 px;
-            /* color: #999; */
+            line-height: 45px;
+            background-color:transparent;
+            padding: 5px 15px 0px 15px;
             border: 0;
-            font - size: 1.4 em;
-            font - weight: bold;
+            font-size: 1.4em;
+            font-weight: bold;
             cursor: pointer;
             outline: none;
-            z - index: 2;
-        </style> `;
+            z-index: 2;
+        }
+        </style>
+        <button type = "button"
+        class = "shadow-nav-toggle-open"> &#9776;</button>
+        `;
     }
 }
 
+class CloseButton extends HTMLElement {
+    constructor() {
+        super();
+
+        const shadow = this.attachShadow({
+            mode: `open`
+        });
+        shadow.innerHTML = `
+        <style>
+        button {
+            background: none;
+            position: relative;
+            top: 0px;
+            right: 0px;
+            padding: 7px 15px 0px 15px;
+            border: 0;
+            font-size: 3em;
+            line-height: 65px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            z-index: 1;
+        }
+        </style>
+        <button type = "button"
+        class = "shadow-nav-toggle-close" > &#735;</button>
+        `;
+
+        shadow.addEventListener(`click`, (e) => alert("Inner target: " + e.target.tagName));
+
+    }
+}
+
+
+
 customElements.define('hamburger-button', HamburgerButton);
+customElements.define('close-button', CloseButton);
+
+
+
 
 
 $(document).ready(function() {
