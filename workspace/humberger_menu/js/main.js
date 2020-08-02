@@ -1,3 +1,30 @@
+class NavList extends HTMLElement {
+    constructor() {
+        super();
+        // this.innerHTML = `<h1>Hello, World!</h1>`;
+        const ul = document.createElement(`ul`);
+        ul.setAttribute(`class`, `nav-list nav-list-hidden`);
+        ul.setAttribute(`id`, `nav-list`);
+        const list = ['HOME', 'INFORMATION', 'PRODUCTS', 'ABOUT', 'INQUIRY'];
+        const mapLi = (val) => {
+            const li = document.createElement(`li`);
+            const a = document.createElement(`a`);
+            a.setAttribute(`href`, ``);
+            a.innerHTML = a.innerHTML + val;
+            li.appendChild(a);
+            return li;
+        }
+
+        const listLi = list.map(mapLi);
+        for (const item of listLi) {
+            ul.appendChild(item);
+        }
+        this.appendChild(ul);
+    }
+}
+
+
+
 class HamburgerButton extends HTMLElement {
     constructor() {
         super();
@@ -63,44 +90,16 @@ class CloseButton extends HTMLElement {
 
 customElements.define('hamburger-button', HamburgerButton);
 customElements.define('close-button', CloseButton);
+customElements.define('nav-list', NavList);
 
 const closeButton = document.querySelector(`#shadow-nav-toggle-close`);
 const hamburgerButton = document.querySelector(`#shadow-nav-toggle-open`);
 const nav = document.querySelector('#nav-list');
 
 closeButton.classList.toggle(`hidden`);
-nav.classList.toggle(`nav-list-hidden`);
-
 
 const onClickMenuButton = () => {
     nav.classList.toggle(`nav-list-hidden`);
     hamburgerButton.classList.toggle(`hidden`);
     closeButton.classList.toggle(`hidden`);
-
-    const test = customElements.get(`hamburger-button`);
 }
-
-
-
-
-
-
-// $(document).ready(function() {
-
-//     $(".nav-toggle-close").hide();
-//     // $("#nav-list").hide();
-//     $(".nav-toggle-open").click(function() {
-//         $("#nav-list").slideToggle("slow", function() {
-//             $(".nav-toggle-open").hide();
-//             $(".nav-toggle-close").show();
-//         });
-//     });
-
-//     $(".nav-toggle-close").click(function() {
-//         // $("#nav-list").slideToggle("slow", function() {
-//         //     $(".nav-toggle-close").hide();
-//         //     $(".nav-toggle-open").show();
-//         // });
-//     });
-
-// });
