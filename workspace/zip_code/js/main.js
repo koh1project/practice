@@ -1,22 +1,20 @@
 class AddressInfo extends HTMLElement {
-
-    static get observedAttributes() {
-        return ['class'];
-    }
-
     constructor() {
         super();
         this.root = this.attachShadow({
             mode: 'open'
         });
+    }
 
-        this.prefecture = ``;
-        this.city = ``;
-        this.address = ``
+    connectedCallback() {
+        console.log('Custom list added to page.');
+        this.render();
+    }
 
+    render() {
         this.root.innerHTML = `
                 <p><label> 郵便番号 <input id="zipcode"
-                type="text" size="10" maxlength="8"></label>
+                type="text" size="10" maxlength="8" value=${this.zipcode}></label>
                 <button id = "btn"
                 onclick = "fetchAddress()"> 検索 </button></p >
                 <p><label> 都道府県 <input id="prefecture" type="text"
@@ -26,15 +24,30 @@ class AddressInfo extends HTMLElement {
                 type="text" size="10" value=${this.city}> </label></p>
                 <p><label>住所 <input id="address"
                 type="text" size="10" value=${this.address}></label></p>
-        `
-    }
-    connectedCallback() {
-        console.log('Custom list added to page.');
+        `;
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        console.log(`${name}'s value has been changed from ${oldValue} to ${newValue}`);
+    static get observedAttributes() {
+        return ['zipcode', `pref`, `city`, `address`];
     }
+    get zipcode() {
+        return this.getAttribute(`zipcode`);
+    }
+    get prefecture() {
+        return this.getAttribute(`prefecture`);
+    }
+    get city() {
+        return this.getAttribute(`city`);
+    }
+    get address() {
+        return this.getAttribute(`address`);
+    }
+
+    attributeChangedCallback(prop, oldValue, newValue) {
+        this.render();
+        console.log(`${prop}'s value has been changed from ${oldValue} to ${newValue}`);
+    }
+
 }
 customElements.define('address-info', AddressInfo);
 
@@ -71,7 +84,17 @@ async function fetchAddress() {
         address3: address
     } = json.results[0];
 
-    e.querySelector(`#prefecture`).value = `${prefecture}`;
-    e.querySelector(`#city`).value = `${city}`;
-    e.querySelector(`#address`).value = `${address}`;
+    const prefElement = e.querySelector(`#prefecture`);
+    const cityElement = e.querySelector(`#city`);
+    const addressElement = e.querySelector(`#address`);
+
+    // prefElement.value = `${prefecture}`;
+    // cityElement.value = `${city}`;
+    // addressElement.value = `${address}`;
+
+    const parentElement = document.querySelector(`.address-info`);
+    parentElement.setAttribute(`zipcode`, `${param}`);
+    parentElement.setAttribute(`prefecture`, `${prefecture}`);
+    parentElement.setAttribute(`city`, `${city}`);
+    parentElement.setAttribute(`address`, `${address}`);
 }
