@@ -35,11 +35,8 @@ class AddressInfo extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         console.log(`${name}'s value has been changed from ${oldValue} to ${newValue}`);
     }
-
 }
-
 customElements.define('address-info', AddressInfo);
-
 
 async function fetchAddress() {
     const element = document.querySelector(`.address-info`).shadowRoot;
@@ -50,15 +47,15 @@ async function fetchAddress() {
         return;
     }
 
-    const BASE_URL = `https://zipcloud.ibsnet.co.jp/api/search`;
-    const param_url = `?zipcode=${param}`;
+    let url = new URL(`https://zipcloud.ibsnet.co.jp/api/search`);
+    const params = {
+        zipcode: param
+    };
 
-    const targetUrl = BASE_URL + param_url;
-    const res = await fetch(targetUrl);
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+    const res = await fetch(url);
 
-    if (!res.ok) {
-        return;
-    }
+    if (!res.ok) return;
 
     const json = await res.json();
 
@@ -67,10 +64,13 @@ async function fetchAddress() {
         return;
     }
 
-    const prefecture = json.results[0].address1;
-    const city = json.results[0].address2;
-    const address = json.results[0].address3;
     const e = document.querySelector(`.address-info`).shadowRoot;
+    const { //Destructuring assignment
+        address1: prefecture,
+        address2: city,
+        address3: address
+    } = json.results[0];
+
     e.querySelector(`#prefecture`).value = `${prefecture}`;
     e.querySelector(`#city`).value = `${city}`;
     e.querySelector(`#address`).value = `${address}`;
