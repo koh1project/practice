@@ -3,6 +3,8 @@
 [8th July 2020th](#08072020)  
 [10th July 2020th](#10072020)  
 [14th July 2020](#14072020)  
+[5th August  2020](#05082020)  
+[10th August  2020](#10082020)  
 
 
 ### 6th July 2020
@@ -168,3 +170,175 @@ https://jigsaw.w3.org/css-validator/
 **Shortcut of Google developer tool**  
 alt click on elements : Expand recursively  
 
+
+[5th August  2020](#05082020)  
+### 05082020
+
+*****Generator
+
+  ```javascript
+function* generator() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const gen = generator(); // "Generator { }"
+
+```
+```javascript
+function* infinite() {
+    let index = 0;
+
+    while (true) {
+        yield index++;
+    }
+}
+
+const generator = infinite(); // "Generator { }"
+
+console.log(generator.next().value); // 0
+console.log(generator.next().value); // 1
+console.log(generator.next().value); // 2
+```
+
+**Birateral communication**
+```javascript
+function* interrogate() {
+  const name = yield `お名前は？`;
+  const color = yield "お好きな色は何ですか？";
+  return `#{name}さんの好きな色は${color}だそうですよ。`;
+}
+
+const it interrogate();
+console.log(it.next());
+
+console.log(int.next("Mike"));
+    //{value:`お好きな色はなんですか？`}
+console.log(it.next(`green`));
+// value: ``Mikeさんの好きな色はgreenだそうですよ。`, done: true}
+```
+
+**this of arrow function**
+```javascript
+
+const annoyer = {
+  phrases: [`A`, `B`, `C`, `D`],
+  pickPhrase() {
+    const { phrases } = this;
+    const idx = Math.floor(Math.random() * phrases.length);
+    return phrases[idx]
+  },
+  start() {
+    setInterval(function () {
+      console.log(this); // => Window
+      console.log(this.pickPhrase);
+    }, 3000);
+  }
+}
+annoyer.start();
+```
+The start() must be written by arrow function.  
+
+```javascript
+const annoyer = {
+  phrases: [`A`, `B`, `C`, `D`],
+  pickPhrase() {
+    const { phrases } = this;
+    const idx = Math.floor(Math.random() * phrases.length);
+    return phrases[idx]
+  },
+  start() {
+    setInterval(() => {
+      console.log(this); // => annoyer
+      console.log(this.pickPhrase());
+    }, 3000);
+  }
+}
+annoyer.start();
+
+annoyer.start();
+```
+
+### #10082020  
+**To encapsulate in JavaScript**
+```javascript
+class Car {
+  constructor(make, model) {
+    this.make = make; /* メーカー */
+    this.model = model; /* モデル */
+    this._userGears = ['P', 'N', 'R', 'D'];
+    this._userGear = this._userGears[0];
+  }
+  
+  get userGear() {
+    console.log(`getter START`);
+    return this._userGear; 
+  }
+  set userGear(value) { 
+    console.log(`SETTER START`);
+    this._userGear = value; 
+  }
+  
+  shift(gear) { this.userGear = gear; }
+}
+
+const car1 = new Car("Tesla", "Model S");
+const car2 = new Car("Mazda", "3i");
+console.log(car1);
+/* 実行結果
+Car {
+  make: 'Tesla',
+  model: 'Model S',
+  _userGears: [ 'P', 'N', 'R', 'D' ],
+  _userGear: 'P' }
+*/
+console.log(car2);
+/* 実行結果
+Car {
+  make: 'Mazda',
+  model: '3i',
+  _userGears: [ 'P', 'N', 'R', 'D' ],
+  _userGear: 'P' }
+*/
+// #@@range_end(list2)
+
+// #@@range_begin(list3)
+car1.shift('D');
+car2.shift('R');
+
+console.log(car1.userGear); // D
+console.log(car2.userGear); // R
+
+car1.userGear = "X"; // Error: ギア指定が正しくない：X  
+// #@@range_end(list3)
+
+```  
+  
+**Immutable.js in Browser**
+```javascript
+<script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.2/immutable.min.js" integrity="sha512-myCdDiGJRYrvRb/VuJ67ljifYTJdc1jdEvL4c4ftX9o3N6EAnmD83c/7l2/91RCINZ7c8w21tiXDT7RDFjdc3g==" crossorigin="anonymous"></script>
+
+  //Immutable.js
+  const natural = Immutable.Range();
+  const natural10 = natural.take(10);
+  console.log(natural10.toArray());
+  ```
+
+
+  **Input event**
+  How to organize many types of input data.  
+  ```javascript
+const input = document.querySelector('#');
+const checkbox = document.querySelector('#');
+const select = document.querySelector('#');
+const formData = {};
+
+for (let input of [ input, checkbox, select ]) {
+	input.addEventListener('input', ({ target }) => {
+		const { name, type, value, checked } = target;
+		formData[name] = type === 'checkbox' ? checked : value;
+		console.log(formData);
+	});
+}
+```
