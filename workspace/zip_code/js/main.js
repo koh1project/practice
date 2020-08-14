@@ -9,18 +9,20 @@ class AddressInfo extends HTMLElement {
     connectedCallback() {
         console.log('Custom list added to page.');
         this.render();
+        const input = this.root.querySelector(`#btn`);
+        input.addEventListener(`click`, ()=>{alert(`Click`)})
     }
 
     render() {
         this.root.innerHTML = `
                 <p><label> 郵便番号 <input id="zipcode"
                 type="text" size="10" maxlength="8" value=${this.zipcode}></label>
-                <button id = "btn"
-                onclick = "fetchAddress()"> 検索 </button></p >
+                <button id="btn"
+                onclick="fetchAddress()"> 検索 </button></p >
                 <p><label> 都道府県 <input id="prefecture" type="text"
                 size = "10"
                 value = ${this.prefecture}> </label></p >
-                <p><label> 市区町村 <input id = "city"
+                <p><label> 市区町村 <input id="city"
                 type="text" size="10" value=${this.city}> </label></p>
                 <p><label>住所 <input id="address"
                 type="text" size="10" value=${this.address}></label></p>
@@ -46,8 +48,45 @@ class AddressInfo extends HTMLElement {
     attributeChangedCallback(prop, oldValue, newValue) {
         this.render();
         console.log(`${prop}'s value has been changed from ${oldValue} to ${newValue}`);
+        
     }
 
+    async innerFetchAddress() {
+        const element = document.querySelector(`.address-info`).shadowRoot;
+        const param = element.querySelector(`#zipcode`).value;
+
+        if (isNaN(parseInt(param))) {
+            // alert(`数字を入力してください`);
+            return;
+        }
+
+        let url = new URL(`https://zipcloud.ibsnet.co.jp/api/search`);
+        const params = {
+            zipcode: param
+        };
+
+        Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+        const res = await fetch(url);
+
+        if (!res.ok) return;
+
+        const json = await res.json();
+
+        if (json.results === null) {
+            alert('該当するデータが見つかりませんでした');
+            return;
+        }
+
+        const { //Destructuring assignment
+            address1: prefecture,
+            address2: city,
+            address3: address
+        } = json.results[0];
+
+        this.prefecture = prefecture;
+        this.city = city;
+        this.address = address;
+    }
 }
 customElements.define('address-info', AddressInfo);
 
