@@ -30,8 +30,13 @@ const resultsWrapper = document.querySelector('.results');
 
 const onInput = async event => {
     const movies = await fetchData(event.target.value);
-    resultsWrapper.innerHTML = '';
 
+    if (!movies.length) {
+        dropdown.classList.remove('is-active');
+        return;
+    }
+
+    resultsWrapper.innerHTML = '';
     dropdown.classList.add('is-active');
     movies.forEach(movie => {
         const option = document.createElement('a');
