@@ -31,6 +31,19 @@ World.add(world, walls);
 
 //Maze generation
 
+const shuffle = (arr) => {
+    let counter = arr.length;
+    while (counter > 0) {
+        const index = Math.floor((Math.random() * counter));
+        counter--;
+
+        // swap two values
+        [arr[counter], arr[index]] = [arr[index], arr[counter]];
+    }
+
+    return arr;
+};
+
 const grid = Array(cells)
     .fill(null)
     .map(() => Array(cells).fill(false));
@@ -56,12 +69,12 @@ const stepThroughCell = (row, column) => {
     grid[row][column] = true;
 
     // Assemble randomly-order list of neighbors
-    const neighbors = [
+    const neighbors = shuffle([
         [row - 1, column], //above
         [row, column + 1], //right
         [row + 1, column], //below
-        [row, column - 1]  //left
-    ];
+        [row, column - 1] //left
+    ]);
 
     // For each neighbor...
 
@@ -76,4 +89,3 @@ const stepThroughCell = (row, column) => {
 };
 
 stepThroughCell(startRow, startColumn);
-console.log(grid);
