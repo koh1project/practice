@@ -1,1 +1,2 @@
-console.log(arguments);
+// console.log(arguments);
+console.log(require);
