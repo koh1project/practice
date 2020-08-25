@@ -1,3 +1,7 @@
+const { hash } = window.location;
+
+console.log(atob(hash.replace('#', '')));
+
 document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
 
@@ -11,3 +15,4 @@ document.querySelector('form').addEventListener('submit', event => {
     linkInput.value = `${window.location}#${encrypted}`;
     linkInput.select();
 });
+
