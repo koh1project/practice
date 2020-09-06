@@ -1,7 +1,7 @@
 const express = require('express');
 const usersRepo = require('../../repositories/users');
-const signupTemplate = require('../../views/admin/signup');
-const signinTemplate = require('../../views/admin/signin');
+const signupTemplate = require('../../views/admin/auth/signup');
+const signinTemplate = require('../../views/admin/auth/signin');
 const router = express.Router();
 
 router.get('/signup', (req, res) => {
@@ -35,7 +35,6 @@ router.get('/signout', (req, res) => {
 });
 
 router.get('/signin', (req, res) => {
-    console.log('Sign in START');
     res.send(signinTemplate());
 });
 
