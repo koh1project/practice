@@ -16,6 +16,10 @@ router.post('/signup', [requireEmail, requirePassword, requirePasswordConfirmati
     const errors = validationResult(req);
     console.error(errors);
 
+    if (!errors.isEmpty()) {
+        return res.send(signupTemplate({ req, errors }));
+    }
+
     const { email, password, passwordConfirmation } = req.body;
     const user = await usersRepo.create(({ email, password }));
 
