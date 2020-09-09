@@ -4,7 +4,14 @@ const { check, validationResult } = require('express-validator');
 const usersRepo = require('../../repositories/users');
 const signupTemplate = require('../../views/admin/auth/signup');
 const signinTemplate = require('../../views/admin/auth/signin');
-const { requireEmail, requirePassword, requirePasswordConfirmation } = require('./validators');
+const {
+    requireEmail,
+    requirePassword,
+    requirePasswordConfirmation,
+    requireEmailExists,
+    requireValidPasswordForUser
+} = require('./validators');
+const signin = require('../../views/admin/auth/signin');
 
 const router = express.Router();
 
@@ -14,7 +21,6 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', [requireEmail, requirePassword, requirePasswordConfirmation], async (req, res) => {
     const errors = validationResult(req);
-    console.error(errors);
 
     if (!errors.isEmpty()) {
         return res.send(signupTemplate({ req, errors }));
@@ -34,29 +40,24 @@ router.get('/signout', (req, res) => {
 });
 
 router.get('/signin', (req, res) => {
-    res.send(signinTemplate());
+    res.send(signinTemplate({}));
 });
 
-router.post('/signin', async (req, res) => {
-    const { email, password } = req.body;
+router.post('/signin', [requireEmailExists, requireValidPasswordForUser],
+    async (req, res) => {
+        const errors = validationResult(req);
 
-    const user = await usersRepo.getOneBy({ email });
+        if (!errors.isEmpty()) {
+            return res.send(signinTemplate({ errors }))
+        }
 
-    if (!user) {
-        return res.send('Email not found');
-    }
+        const { email } = req.body;
 
-    const validPassword = await usersRepo.comparePasswords(
-        user.password, password
-    );
+        const user = await usersRepo.getOneBy({ email });
 
-    if (!validPassword) {
-        return res.send('Invalid password');
-    }
+        req.session.userId = user.id;
 
-    req.session.userId = user.id;
-
-    res.send('Your are signed in');
-});
+        res.send('Your are signed in');
+    });
 
 module.exports = router;
