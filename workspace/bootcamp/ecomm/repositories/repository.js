@@ -18,9 +18,7 @@ module.exports = class Repository {
         attrs.id = this.randomId();
 
         const records = await this.getAll();
-        record.push(attrs);
-
-        records.push(record);
+        records.push(attrs);
         await this.writeAll(records);
 
         return attrs;
