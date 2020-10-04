@@ -30,7 +30,7 @@ router.post(
 
         req.session.userId = user.id;
 
-        res.send(req.body);
+        res.redirect('/admin/products')
     });
 
 router.get(
@@ -57,7 +57,7 @@ router.post(
 
         req.session.userId = user.id;
 
-        res.send('Your are signed in');
+        res.redirect('/admin/products')
     });
 
 module.exports = router;
