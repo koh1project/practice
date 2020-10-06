@@ -34,7 +34,7 @@ router.post('/cart/products', async (req, res) => {
     // Either increment quantity for existing product
     // OR add new product to items array
 
-    res.send('Product added to cart');
+    res.redirect('/cart');
 });
 
 // Receive a GET request to show all items in cart
@@ -54,5 +54,16 @@ router.get('/cart', async (req, res) => {
 });
 
 // Receive a POST request to delete an item from cart
+router.post(
+    '/cart/products/delete',
+    async (req, res) => {
+        const { itemId } = req.body;
+        const cart = await cartsRepo.getOne(req.session.cartId);
+
+        const items = cart.items.filter(item => item.id !== itemId);
+        await cartsRepo.update(req.session.cartId, { items });
+
+        res.redirect('/cart');
+    });
 
 module.exports = router;
