@@ -4,7 +4,7 @@ class Food {
     element.addEventListener('click', this.clickEventHandler.bind(this));
   }
   clickEventHandler() {
-    this.element.classList.toggle('food-active');
+    this.element.classList.toggle('food--active');
   };
 }
 class Foods {
