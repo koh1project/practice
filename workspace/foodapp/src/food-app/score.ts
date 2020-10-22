@@ -3,7 +3,7 @@ import { Foods } from "./foods"
 
 export class Score implements Scoreable {
   private static instance: Score;
-  get totalScore() {
+  get totazlScore() {
     const foods = Foods.getInstance();
     return foods.activeElementsScore.reduce((total, score) => total + score, 0);
   }
