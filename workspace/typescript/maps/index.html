@@ -2,15 +2,22 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNLrJhOMz6idD05pzfn5lhA-TAw-mAZCU"></script>
-  <script src="./src/index.ts"></script>
 </head>
 
 <body>
+  <div>
+    <div id="map" style="height: 100%; position: initial;"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNLrJhOMz6idD05pzfn5lhA-TAw-mAZCU"></script>
+    <script src="./src/index.ts"></script>
+  </div>
 
+
+  <style>
+    #map {
+      position: inherit !important;
+    }
+  </style>
 </body>
 
 </html>
