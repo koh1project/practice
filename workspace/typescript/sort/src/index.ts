@@ -1,4 +1,4 @@
-console.log('Hi there');
+console.log(123);
 
 const logSomething = () => {
   console.log('Something')
