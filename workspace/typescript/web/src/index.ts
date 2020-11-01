@@ -1,10 +1,10 @@
-import { User } from "./models/User";
+import { Collection } from "./models/Collection";
 
-const user = User.buildUser({
-  id: 1
+const rootUrl = "http://localhost:3000/users";
+const collection = new Collection(rootUrl);
+
+collection.on("change", () => {
+  console.log(collection.models);
 });
 
-user.on("change", () => {
-  console.log(user);
-});
-user.fetch();
+collection.fetch();
