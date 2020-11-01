@@ -1,9 +1,14 @@
 {
   "users": [
     {
-      "name": "myName",
-      "age": 20,
+      "name": "1st record",
+      "age": 0,
       "id": 1
+    },
+    {
+      "name": "new record",
+      "age": 0,
+      "id": 2
     }
   ]
 }
