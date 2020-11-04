@@ -25,10 +25,15 @@ router.get('/login', (req: Request, res: Response) => {
 router.post('/login', (req: RequestWithBody, res: Response) => {
   const { email, password } = req.body;
 
-  if (email) {
-    res.send(email.toUpperCase());
+  const testEmail = 'test@gmail.com';
+  const testPassword = 'pass';
+  if (email && password && email === testEmail && password === testPassword) {
+    // mark this person as logged in
+    req.session = { loggedIn: true };
+    // redirect them to the root route
+    res.redirect('/');
   } else {
-    res.send('404 Email is undefined');
+    res.send('Invalid email or password');
   }
 });
 
