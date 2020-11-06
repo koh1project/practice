@@ -8,7 +8,8 @@ class App extends Component {
       { name: 'Max', age: 20 },
       { name: 'Mike', age: 18 },
       { name: 'Sam', age: 0 }
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -29,6 +30,11 @@ class App extends Component {
         { name: 'Sam', age: 100 }
     ]});
   }
+
+  togglePersonsHandler = () => {
+
+  }
+
   render() {
     const style = {
       backgroundColor: '#white',
@@ -44,12 +50,12 @@ class App extends Component {
         <p>This is working</p>
         <button
           style={ style }
-          onClick={ () => this.switchNameHandler('In arrow') }>Switch Name</button>
-        < Person name={ this.state.persons[0].name } age={ this.state.persons[0].age } />
-        < Person name={ this.state.persons[1].name } age={ this.state.persons[1].age }
+          onClick={ () => this.togglePersonsHandler }>Switch Name</button>
+          <Person name={ this.state.persons[0].name } age={ this.state.persons[0].age } />
+          <Person name={ this.state.persons[1].name } age={ this.state.persons[1].age }
         click={this.switchNameHandler.bind(this, 'In render')}
-        changed={this.nameChangedHandler}/>
-        < Person name={ this.state.persons[2].name } age={ this.state.persons[2].age } />
+        changed={this.nameChangedHandler} />
+          <Person name={ this.state.persons[2].name } age={ this.state.persons[2].age } />
       </div>
     );
 
