@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   nameChangedHandler = (e)  => {
-    console.log(e.target.value)
     this.setState({
       persons:[
         { name: 'Max', age: 20 },
