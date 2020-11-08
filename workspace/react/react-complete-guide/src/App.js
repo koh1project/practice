@@ -23,6 +23,7 @@ class App extends Component {
 
   nameChangedHandler = (e, id)  => {
     const personIndex = this.state.persons.findIndex(p => {
+      // return p.id === id;
       return p.id === id;
     });
 
@@ -75,7 +76,7 @@ class App extends Component {
         <div className={ classes.App }>
           <h1>Hi, I'm a React App</h1>
           <p className={ assignedClasses.join(' ') }>This is working</p>
-          <button className={ btnClass } alt={ this.state.showPersons }
+          <button className={ btnClass } alt={ this.state.showPersons.valueOf() }
             onClick={ this.togglePersonsHandler }>Toggle Persons
           </button>
           { persons }
