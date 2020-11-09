@@ -6,8 +6,12 @@ const cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     // Http request...
-  });
-  
+
+    setTimeout(() => {
+        alert('Saved data to cloud');
+      }, 1000)
+    // }, [props.persons]);
+    }, []); // This works only first time
 
   const assignedClasses = [];
   let btnClass = '';
