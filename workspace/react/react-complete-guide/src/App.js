@@ -6,9 +6,9 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { id:"sasdf", name: 'Max', age: 20 },
-      { id:"fda", name: 'Mike', age: 18 },
-      { id:"gdfa",name: 'Sam', age: 0 }
+      {id:"sasdf", name: 'Max', age: 20},
+      {id:"fda", name: 'Mike', age: 18},
+      {id:"gdfa",name: 'Sam', age: 0}
     ],
     otherState: 'Some other values',
     showPersons: false
@@ -18,7 +18,7 @@ class App extends Component {
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
-    this.setState({ persons: persons });
+    this.setState({persons: persons});
   }
 
   nameChangedHandler = (e, id)  => {
@@ -35,12 +35,12 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({ persons: persons });
+    this.setState({persons: persons});
   }
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({ showPersons: !doesShow });
+    this.setState({showPersons: !doesShow});
   }
 
   render() {
@@ -57,13 +57,13 @@ class App extends Component {
     if(this.state.showPersons) {
       persons = (
         <div>
-          { this.state.persons.map( (person, index) => {
+          { this.state.persons.map((person, index) => {
             return <Person
               key={ person.id }
               name={ person.name}
               age={ person.age }
-              click={ () => this.deletePersonHandler(index) }
-              changed={ (event) => this.nameChangedHandler(event, person.id) } />
+              click={() => this.deletePersonHandler(index)}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div>
       );
@@ -74,9 +74,9 @@ class App extends Component {
         <h1>Hi, I'm a React App</h1>
         <p>This is working</p>
         <button
-          style={ style }
-          onClick={  this.togglePersonsHandler }>Toggle Persons</button>
-        { persons }
+          style={style}
+          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
       </div>
     );
 
