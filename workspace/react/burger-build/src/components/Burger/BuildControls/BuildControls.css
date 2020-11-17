@@ -8,3 +8,8 @@
   margin: auto;
   padding: 10px 0;
 }
+
+/* TODO add order button */
+.OrderButton {
+  background-color: #DAD735;
+}
