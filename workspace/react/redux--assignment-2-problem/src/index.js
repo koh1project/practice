@@ -7,7 +7,6 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import reducer from './store/reducer';
-import * as actionTypes from './store/actions';
 
 const store = createStore(reducer);
 
