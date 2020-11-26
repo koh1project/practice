@@ -20,9 +20,6 @@ class BurgerBuilder extends Component {
   //   this.state = {...}
   // }
   state = {
-    ingredients: null,
-    totalPrice: 4,
-    purchasable: false,
     purchasing: false,
     loading: false,
     error: false
@@ -58,7 +55,6 @@ class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
-  //   // alert('You continue!');
     const queryParams = [];
     for (let i in this.state.ingredients) {
       queryParams.push(encodeURI(i)+ '=' + encodeURI(this.state.ingredients[i]));
