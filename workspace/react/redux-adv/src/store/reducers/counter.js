@@ -20,13 +20,13 @@ const reducer = (state = initialState, action) => {
           ...state,
           counter: state.counter + action.val
         }
-        case actionTypes.SUBTRACT:
-          return {
-            ...state,
-            counter: state.counter - action.val
-          }
+      case actionTypes.SUBTRACT:
+        return {
+          ...state,
+          counter: state.counter - action.val
+        }
+      default: return state;
   }
-  return state;
 };
 
 export default reducer;
