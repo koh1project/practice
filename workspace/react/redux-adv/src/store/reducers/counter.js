@@ -15,17 +15,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         counter: state.counter - 1
       }
-      case actionTypes.ADD:
-        return {
-          ...state,
-          counter: state.counter + action.val
-        }
-      case actionTypes.SUBTRACT:
-        return {
-          ...state,
-          counter: state.counter - action.val
-        }
-      default: return state;
+    case actionTypes.ADD:
+      return {
+        ...state,
+        counter: state.counter + action.val
+      }
+    case actionTypes.SUBTRACT:
+      return {
+        ...state,
+        counter: state.counter - action.val
+      }
+    default: return state;
   }
 };
 
