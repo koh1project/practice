@@ -21,20 +21,7 @@ class BurgerBuilder extends Component {
   // }
   state = {
     purchasing: false,
-    loading: false,
-    error: false
   }
-
-  componentDidMount () {
-    // axios.get('https://react-my-burger-499a0.firebaseio.com/Ingredients.json')
-      // .then(response => {
-      //   this.setState({ingredients: response.data});
-      // })
-      // .catch(error => {
-      //   this.setState({error: true});
-      // });
-  }
-
   updatePurchaseState (ingredients) {
     const sum = Object.keys(ingredients)
       .map(igKey => {
@@ -89,9 +76,6 @@ class BurgerBuilder extends Component {
         purchaseContinued={this.purchaseContinueHandler} />;
     }
 
-    if (this.state.loading) {
-      orderSummary = <Spinner />
-    }
     return (
       <Aux>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
