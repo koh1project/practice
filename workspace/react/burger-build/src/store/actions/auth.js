@@ -21,21 +21,26 @@ export const authFail = (error) => {
   };
 };
 
-export const auth = (email, password) => {
+export const auth = (email, password, isSignup) => {
   return dispatch => {
     dispatch(authStart());
     const authData = {
       email: email,
       password: password,
       returnSecureToken: true
+    };
+    let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC65IsmCM8GZOMiXtEAI_ZBTCCkzfztjW4';
+    if (isSignup) {
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC65IsmCM8GZOMiXtEAI_ZBTCCkzfztjW4';
     }
-    axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC65IsmCM8GZOMiXtEAI_ZBTCCkzfztjW4', authData)
+    axios.post(url, authData)
       .then(response => {
         console.log(response);
         dispatch(authSuccess(response.data));
       })
       .catch(err => {
         console.log(err);
+        dispatch(authFail(err));
       });
   };
 };
