@@ -39,6 +39,12 @@ export const authFail = (error) => {
 export const auth = (email, password, isSignup) => {
   return dispatch => {
     dispatch(authStart());
+
+    // TODO delete
+    // Test code for making it always valid
+    email = "test@mail.com"
+    password = "123456"
+
     const authData = {
       email: email,
       password: password,
