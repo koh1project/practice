@@ -8,6 +8,7 @@ export const authStart = () => {
 };
 
 export const authSuccess = (token, userId) => {
+
   return {
     type: actionTypes.AUTH_SUCCESS,
     token: token,
@@ -16,6 +17,8 @@ export const authSuccess = (token, userId) => {
 };
 
 export const logout = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('expirationTime');
   return {
     type: actionTypes.AUTH_LOGOUT
   };
@@ -57,6 +60,9 @@ export const auth = (email, password, isSignup) => {
     axios.post(url, authData)
       .then(response => {
         console.log(response);
+        const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+        localStorage.setItem('token', response.data.idToken);
+        localStorage.setItem('expirationDate', expirationDate)
         dispatch(authSuccess(response.data.idToken, response.data.localId));
         dispatch(checkAuthTimeout(response.data.expiresIn));
       })
