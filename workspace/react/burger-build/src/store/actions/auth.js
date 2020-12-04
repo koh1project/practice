@@ -45,8 +45,8 @@ export const auth = (email, password, isSignup) => {
 
     // TODO delete
     // Test code for making it always valid
-    email = "test@mail.com"
-    password = "123456"
+    // email = "test@mail.com"
+    // password = "123456"
 
     const authData = {
       email: email,
