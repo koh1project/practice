@@ -1,40 +1,55 @@
-const { ApolloServer } = require('apollo-server');
+const express = require('express')
+const { ApolloServer } = require('apollo-server-express')
+const { MongoClient } = require('mongodb')
+const { readFileSync } = require('fs')
+const expressPlayground = require('graphql-playground-middleware-express').default
+const resolvers = require('./resolvers')
 
-const typeDefs = `
-  type Query {
-    totalPhotos: Int!
+require('dotenv').config()
+var typeDefs = readFileSync('./typeDefs.graphql', 'UTF-8')
+
+async function start() {
+  const app = express()
+  const MONGO_DB = process.env.DB_HOST
+  let db
+
+  try {
+    const client = await MongoClient.connect(MONGO_DB, { useNewUrlParser: true })
+    db = client.db()
+  } catch (error) {
+    console.log(`
+    
+      Mongo DB Host not found!
+      please add DB_HOST environment variable to .env file
+
+      exiting...
+       
+    `)
+    process.exit(1)
   }
-    type Mutation {
-      postPhoto(name: String! description: String): boolean!
+
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: async ({ req }) => {
+      const githubToken = req.headers.authorization
+      const currentUser = await db.collection('users').findOne({ githubToken })
+      return { db, currentUser }
     }
-`;
+  })
 
-let photos = [];
+  server.applyMiddleware({ app })
 
-const resolvers = {
-  Query: {
-    // 必ずスキーマと同じ名前のリゾルバ関数を定義する必要がある
-    totalPhotos: () => photos.length
-  },
+  app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 
-  Mutation: {
-    postPhoto(parent, args) {
-      photos.push(args)
-      return true
-    }
-  }
-};
+  app.get('/', (req, res) => {
+    let url = `https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&scope=user`
+    res.end(`<a href="${url}">Sign In with Github</a>`)
+  })
 
-// サーバーのインスタンスを作成
-// その際typeDefs(スキーマ)とリゾルバを引数に取る
-const server = new ApolloServer({
-  typeDefs,
-  resolvers
-});
+  app.listen({ port: 4000 }, () =>
+    console.log(`GraphQL Server running at http://localhost:4000${server.graphqlPath}`)
+  )
+}
 
-// Webサーバー起動
-server.listen()
-  .then(({ url }) => console.log(`GraphQL Service running on ${url}`));
-
-
-// https://www.graphqlbin.com/v2/6RQ6TM
+start()
