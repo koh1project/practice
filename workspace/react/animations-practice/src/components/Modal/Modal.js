@@ -19,8 +19,8 @@ const modal = (props) => {
           const cssClasses = [
             'Modal',
             state === 'entering'
-            ? 'ModalOpen'
-            : state === 'exiting' ? 'ModalClosed' : null
+              ? 'ModalOpen'
+              : state === 'exiting' ? 'ModalClosed' : null
           ];
           return (
             <div className={cssClasses.join(' ')}>
