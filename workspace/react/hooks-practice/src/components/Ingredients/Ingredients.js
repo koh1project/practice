@@ -2,11 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import IngredientForm from './IngredientForm';
 import IngredientList from './IngredientList';
+import ErrorModal from '../UI/ErrorModal';
 import Search from './Search';
 
 const Ingredients = () => {
   const [userIngredients, setUserIngredients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
 
   useEffect(() => {
     console.log(`Re-render userIngredients`, userIngredients);
@@ -36,18 +38,26 @@ const Ingredients = () => {
 
   const removeIngredientHandler = ingredientId => {
     setIsLoading(true);
-    fetch(`https://react-hooks-practice-8c8e5-default-rtdb.firebaseio.com/ingredients/${ingredientId}.json`, {
+    // fetch(`https://react-hooks-practice-8c8e5-default-rtdb.firebaseio.com/ingredients/${ingredientId}.json`, {
+    fetch(`https://react-hooks-practice-8c8e5-default-rtdb.firebaseio.com/ingredients/${ingredientId}.jsonERROR`, {
       method: 'DELETE'
     }).then(response => {
       setIsLoading(false);
       setUserIngredients(prevIngredients =>
         prevIngredients.filter(ingredient => ingredient.id !== ingredientId)
       )
+    }).catch(error => {
+      setError(error.message);
     });
- };
+   };
+  const clearError = () => {
+    setError(null);
+    setIsLoading(false);
+  };
 
   return (
     <div className="App">
+      {error && <ErrorModal onClose={clearError} >{error}</ErrorModal>}
       <IngredientForm
         onAddIngredient={addIngredientHandler}
         loading={isLoading}/>
