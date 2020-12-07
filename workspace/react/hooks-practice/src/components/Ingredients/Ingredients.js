@@ -27,7 +27,7 @@ const Ingredients = () => {
   const addIngredientHandler = ingredient => {
     fetch('https://react-hooks-practice-8c8e5-default-rtdb.firebaseio.com/ingredients.json', {
       method: 'POST',
-      body: JSON.stringify({ingredient}),
+      body: JSON.stringify(ingredient),
       headers: {'Content-Type': 'application/json'}
     }).then(response => {
       return response.json();
