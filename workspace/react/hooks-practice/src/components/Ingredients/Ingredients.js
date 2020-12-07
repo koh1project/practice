@@ -23,6 +23,10 @@ const Ingredients = () => {
     });
   }, []);
 
+  useEffect(() => {
+    console.log(`Re-render userIngredients`, userIngredients);
+  }, [userIngredients]);
+
 
   const addIngredientHandler = ingredient => {
     fetch('https://react-hooks-practice-8c8e5-default-rtdb.firebaseio.com/ingredients.json', {
