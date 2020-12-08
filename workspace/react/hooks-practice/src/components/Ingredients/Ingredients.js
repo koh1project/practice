@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect, useCallback } from 'react';
+import React, { useReducer, useEffect, useCallback, useMemo } from 'react';
 
 import IngredientForm from './IngredientForm';
 import IngredientList from './IngredientList';
@@ -89,6 +89,14 @@ const Ingredients = () => {
     dispatchHttp({type: 'CLEAR'});
   };
 
+  const ingredientList = useMemo(() => {
+    return (
+      <IngredientList
+          ingredients={userIngredients}
+          onRemoveItem={removeIngredientHandler}/>
+    );
+  }, [userIngredients, removeIngredientHandler]);
+
   return (
     <div className="App">
       {httpState.error && <ErrorModal onClose={clearError} >{httpState.error}</ErrorModal>}
@@ -98,10 +106,7 @@ const Ingredients = () => {
 
       <section>
         <Search onLoadIngredients={filteredIngredientHandler} />
-        <IngredientList
-          ingredients={userIngredients}
-          onRemoveItem={removeIngredientHandler}/>
-        {/* Need to add list here! */}
+        {ingredientList}
       </section>
     </div>
   );
