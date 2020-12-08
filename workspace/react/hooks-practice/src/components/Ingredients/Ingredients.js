@@ -49,7 +49,7 @@ const Ingredients = () => {
     dispatch({type: 'SET', ingredients: filteredIngredients});
   }, []);
 
-  const addIngredientHandler = ingredient => {
+  const addIngredientHandler = useCallback(ingredient => {
     dispatchHttp({type: 'SEND'});
     fetch('https://react-hooks-practice-8c8e5-default-rtdb.firebaseio.com/ingredients.json', {
       method: 'POST',
@@ -67,9 +67,9 @@ const Ingredients = () => {
         type: 'ADD',
         ingredient: {id: responseData.name, ...ingredient}});
     });
-  };
+  }, []);
 
-  const removeIngredientHandler = ingredientId => {
+  const removeIngredientHandler = useCallback(ingredientId => {
     dispatchHttp({type: 'SEND'});
     fetch(`https://react-hooks-practice-8c8e5-default-rtdb.firebaseio.com/ingredients/${ingredientId}.json`, {
     // fetch(`https://react-hooks-practice-8c8e5-default-rtdb.firebaseio.com/ingredients/${ingredientId}.jsonERROR`, {
@@ -83,10 +83,10 @@ const Ingredients = () => {
     }).catch(error => {
       dispatchHttp({type: 'ERROR', errorMessage: error.message});
     });
-   };
+   }, []);
+
   const clearError = () => {
     dispatchHttp({type: 'CLEAR'});
-
   };
 
   return (
