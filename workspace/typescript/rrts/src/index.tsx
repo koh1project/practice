@@ -6,9 +6,11 @@ interface AppProps {
 }
 
 class App extends React.Component<AppProps> {
-  state = {
-    counter: 0
-  };
+  constructor(props: AppProps) {
+    super(props);
+
+    this.state = { counter: 0 };
+  }
 
   onIncrement = (): void => {
     this.setState({ counter: this.state.counter + 1 });
