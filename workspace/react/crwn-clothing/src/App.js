@@ -8,7 +8,6 @@ import HomePage from './pages/homepage/homepage.component';
 
 const HatsPage = () => (
   <div>
-    <Link to="/topics">Topics</Link>
     <h1>HATS PAGE</h1>
   </div>
 );
