@@ -63,7 +63,7 @@ class ProjectState extends State<Project> {
 
   moveProject(projectId: string, newStatus: ProjectStatus) {
     const project = this.projects.find((prj) => prj.id === projectId);
-    if (project) {
+    if (project && project.status !== newStatus) {
       project.status = newStatus;
       this.updateListeners();
     }
@@ -185,9 +185,8 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
   }
 
   @autobind
-  dragEndHandler(_: DragEvent): void {
-    console.log('Drag End');
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  dragEndHandler(_event: DragEvent): void {}
 
   configure() {
     this.element.addEventListener('dragstart', this.dragStartHandler);
@@ -228,6 +227,7 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
     );
   }
   @autobind
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   dragLeaveHandler(_event: DragEvent): void {
     const listEl = this.element.querySelector('ul')!;
     listEl.classList.remove('droppable');
