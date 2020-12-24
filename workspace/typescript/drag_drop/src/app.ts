@@ -91,6 +91,7 @@ function validate(validatableInput: Validatable): boolean {
 }
 
 // Auto bind decorator
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function autobind(_target: any, _methodName: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
   const adjDescriptor: PropertyDescriptor = {
@@ -252,6 +253,9 @@ class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const prjInput = new ProjectInput();
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const activePrjList = new ProjectList('active');
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const finishedPrjList = new ProjectList('finished');
