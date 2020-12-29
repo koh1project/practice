@@ -1,8 +1,8 @@
-// No longer necessary
+import styled from 'styled-components';
 
-.homepage {
+export const HomePageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 80px;
-}
+`;
