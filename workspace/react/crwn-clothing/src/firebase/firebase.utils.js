@@ -49,3 +49,16 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   // eslint-disable-next-line consistent-return
   return userRef;
 };
+
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+
+  const batch = firestore.batch();
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  // eslint-disable-next-line no-return-await
+  return await batch.commit();
+};
