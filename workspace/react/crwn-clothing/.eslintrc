@@ -28,6 +28,7 @@
     "no-alert": "off",
     "import/prefer-default-export": "off",
     "no-shadow": "off",
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "arrow-body-style": "off"
   }
 }
