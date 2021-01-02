@@ -1,6 +1,6 @@
 import { Utils } from '../app/Utils';
 
-describe.only('Utils test suite', () => {
+describe('Utils test suite', () => {
   beforeEach(() => {
     console.log('Before each');
   });
@@ -31,5 +31,7 @@ describe.only('Utils test suite', () => {
     expect(parsedUrl.query).toEqual(expectedQuery);
     expect(expectedQuery).toBe(expectedQuery);
   });
+
+  test.todo('test invalid URL');
 
 });
