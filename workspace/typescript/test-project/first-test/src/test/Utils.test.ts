@@ -39,7 +39,7 @@ describe('Utils test suite', () => {
     expect(expectError).toThrowError('Empty url');
   });
 
-  test('test invalid URL with try catch', () => {
+  test.only('test invalid URL with try catch', () => {
     try {
       Utils.parseUrl('');
     } catch (error) {
