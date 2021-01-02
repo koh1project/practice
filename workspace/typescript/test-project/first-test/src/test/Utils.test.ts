@@ -1,6 +1,15 @@
 import { Utils } from '../app/Utils';
 
-describe('Utils test suite', () => {
+describe.only('Utils test suite', () => {
+  beforeEach(() => {
+    console.log('Before each');
+  });
+
+  beforeAll(() => {
+    console.log('Before All');
+  });
+
+
   test('first test', () => {
     const result = Utils.toUpperCase('abc');
     expect(result).toBe('ABC');
