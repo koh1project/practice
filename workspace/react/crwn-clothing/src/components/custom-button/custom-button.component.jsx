@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './custom-button.styles.scss';
+import './custom-buttom.styles.scss';
 
 const CustomButton = ({ children, isGoogleSignIn, inverted, ...otherProps }) => (
   // eslint-disable-next-line react/button-has-type
