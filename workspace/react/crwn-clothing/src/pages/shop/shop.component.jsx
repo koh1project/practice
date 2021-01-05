@@ -1,9 +1,10 @@
+/* eslint-disable import/no-named-default */
+
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-// eslint-disable-next-line import/no-named-default
 import { default as CollectionsOverview } from '../../components/collections-overview/collections-overview.container';
-import CollectionPage from '../collection/collection.component';
+import { default as CollectionPage } from '../collection/collection.container';
 
 const ShopPage = ({ match }) => (
   <div className="shop-page">
