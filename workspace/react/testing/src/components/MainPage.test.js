@@ -38,4 +38,20 @@ it('filters robots correctly', () => {
   }]);
 });
 
+it('filters robots correctly 2', () => {
+  const mockProps3 = {
+    onRequestRobots: jest.fn(),
+    robots:[{
+      id: 3,
+      name: 'john',
+      email: 'john@gmail.com'
+    }],
+    searchField: 'a',
+    isPending: false,
+  };
+  const filterRobots = [];
+  const wrapper3 = shallow(<MainPage {...mockProps3}/>);
+  expect(wrapper3.instance().filterRobots([])).toEqual(filterRobots);
+});
+
 
