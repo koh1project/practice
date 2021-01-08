@@ -5,7 +5,7 @@ import Directory from '../../components/directory/directory.component';
 import { HomePageContainer } from './homepage.styles';
 
 const HomePage = () => {
-  throw Error;
+  // throw Error;
 
   // eslint-disable-next-line no-unreachable
   return (
