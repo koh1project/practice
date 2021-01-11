@@ -17,7 +17,7 @@ describe('LoginHandler test suite', () => {
     generateToken: jest.fn()
   };
   const getRequestBodyMock = jest.fn();
-  
+
   beforeEach(() => {
     loginHandler = new LoginHandler(
       requestMock as any,
@@ -25,6 +25,7 @@ describe('LoginHandler test suite', () => {
       authorizerMock as any
     );
     Utils.getRequestBody = getRequestBodyMock;
+    requestMock.method = HTTP_METHODS.POST;
   });
   afterEach(() => {
     jest.clearAllMocks();
@@ -50,8 +51,7 @@ describe('LoginHandler test suite', () => {
     expect(responseMock.writeHead).not.toHaveBeenCalled();
   });
 
-  test.only('post request with valid login', async () => {
-    requestMock.method = HTTP_METHODS.POST;
+  test('post request with valid login', async () => {
     getRequestBodyMock.mockReturnValueOnce({
         username: 'someUser',
         password: 'password'
@@ -65,5 +65,23 @@ describe('LoginHandler test suite', () => {
     expect(responseMock.write).toBeCalledWith(JSON.stringify(someSessionToken));
   });
 
+  test('post request with invalid login', async () => {
+    getRequestBodyMock.mockReturnValueOnce({
+        username: 'someUser',
+        password: 'password'
+    });
+    authorizerMock.generateToken.mockReturnValueOnce(null);
+    await loginHandler.handleRequest();
+    expect(responseMock.statusCode).toBe(HTTP_CODES.NOT_fOUND);
+    expect(responseMock.write).toBeCalledWith('wrong username or password');
+  });
+
+  test('post request with unexpected error', async () => {
+    getRequestBodyMock.mockRejectedValueOnce(new Error('something went wrong!'));
+    authorizerMock.generateToken.mockReturnValueOnce(null);
+    await loginHandler.handleRequest();
+    expect(responseMock.statusCode).toBe(HTTP_CODES.INTERNAL_SERVER_ERROR);
+    expect(responseMock.write).toBeCalledWith('Internal error: something went wrong!');
+  });
 
 });
