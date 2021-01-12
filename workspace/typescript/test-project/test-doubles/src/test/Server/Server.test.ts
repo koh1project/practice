@@ -3,8 +3,10 @@ import { DataHandler } from './../../app/Handlers/DataHandler';
 import { Authorizer } from './../../app/Authorization/Authorizer';
 import { LoginHandler } from './../../app/Handlers/LoginHandler';
 import { Server } from './../../app/Server/Server';
+
 jest.mock('./../../app/Handlers/LoginHandler');
 jest.mock('./../../app/Handlers/DataHandler');
+jest.mock('./../../app/Authorization/Authorizer');
 
 const requestMock = {
   url: '',
