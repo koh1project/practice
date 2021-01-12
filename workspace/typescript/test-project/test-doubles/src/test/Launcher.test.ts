@@ -20,4 +20,12 @@ describe('Launcher test suite', () => {
     new Launcher();
     expect(mockedServer).toBeCalled();
   });
+
+  test('launch app', () => {
+    const launchAppMock = jest.fn();
+    Launcher.prototype.launchApp = launchAppMock;
+    new Launcher().launchApp();
+    expect(launchAppMock).toBeCalled();
+  });
+  
 });
