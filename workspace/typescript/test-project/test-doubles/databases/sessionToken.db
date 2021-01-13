@@ -2,3 +2,6 @@
 {"accessRights":[1,2,3,4],"userName":"user1","tokenId":"piyu9r9tmk7gr4rjzviwq","valid":true,"expirationTime":{"$$date":1597066418183},"_id":"5B73AJpFYgbQxT9D"}
 {"accessRights":[1,2,3,4],"expirationTime":{"$$date":1597682907609},"valid":true,"tokenId":"f9g1wnbtvcu","_id":"6mrGxgbBTzKs5RQI"}
 {"accessRights":[1,2,3,4],"expirationTime":{"$$date":1597074714001},"valid":true,"tokenId":"oi3ob6s5hvg","_id":"wuQJTkvrbPqohg0M"}
+{"accessRights":[1,2,3],"expirationTime":{"$$date":1610517402929},"tokenId":"someTokenIdyn7tlj","userName":"someUserName","valid":true,"_id":"CwdPeW92BtVVbozO"}
+{"$$deleted":true,"_id":"CwdPeW92BtVVbozO"}
+{"accessRights":[1,2,3],"expirationTime":{"$$date":1610521003067},"userName":"iTestUser","valid":true,"tokenId":"4y19oype226","_id":"87m7sWbucS4q3lcN"}
