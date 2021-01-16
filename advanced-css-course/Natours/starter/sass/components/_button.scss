@@ -36,6 +36,16 @@
     }
   }
 
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-white;
+      color: $color-white;
+    }
+  }
+
   &::after {
     content: "";
     display: inline-block;
@@ -69,7 +79,8 @@
   }
 
   &:hover {
-    background-color: $color-primary;;
+    background-color: $color-primary;
+    ;
     color: $color-white;
     box-shadow: 0 1rem 2rem rgba($color-black, .15);
     transform: translateY(-2px);
