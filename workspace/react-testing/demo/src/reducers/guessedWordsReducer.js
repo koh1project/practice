@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { actionTypes } from '../actions';
 
 export default (state = [], action) => {
