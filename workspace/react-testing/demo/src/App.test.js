@@ -9,7 +9,7 @@ const mockGetSecretWord = jest.fn();
 
 const setup = () => {
   mockGetSecretWord.mockClear();
-  hookActions.mockGetSecretWord = mockGetSecretWord;
+  hookActions.getSecretWord = mockGetSecretWord;
 
    // use mount, because useEffect currently not called on `shallow`
   return mount(<App />);
@@ -27,4 +27,5 @@ describe('getSecretWord calls', () => {
 
     expect(mockGetSecretWord).toHaveBeenCalled();
   });
+
 });
