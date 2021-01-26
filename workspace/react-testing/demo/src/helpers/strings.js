@@ -20,7 +20,10 @@ const languageStrings = {
 };
 
 const getStringByLanguage = (languageCode, stringKey, strings = languageStrings) => {
-  
+  if (!strings[languageCode] || !strings[languageCode][stringKey]) {
+    return strings.en[stringKey];
+  }
+  return strings[languageCode][stringKey];
 };
 
 export default {
