@@ -19,10 +19,10 @@ const languageStrings = {
   },
 };
 
-const getStringByLanguae = (languageCode, stringKey, strings = languageStrings) => {
-
+const getStringByLanguage = (languageCode, stringKey, strings = languageStrings) => {
+  
 };
 
 export default {
-  getStringByLanguae,
+  getStringByLanguage,
 }
