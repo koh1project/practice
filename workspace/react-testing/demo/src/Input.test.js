@@ -1,14 +1,22 @@
 import React from 'react'
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+
 import { findByTestAttr, checkProps } from '../test/testUtils';
 import Input from './Input';
+import languageContext from './contexts/languageContext';
 
-const setup = (secretWord='party') => {
-  return shallow(<Input secretWord={secretWord}/>);
+const setup = ({ language, secretWord}) => {
+  language = language || 'en';
+  secretWord = secretWord || 'party';
+  return mount(
+  <languageContext.Provider value={language}>
+    <Input secretWord={secretWord}/>
+  </languageContext.Provider>
+  );
 };
 
 test('renders', () => {
-  const wrapper = setup();
+  const wrapper = setup({});
   const inputComponent = findByTestAttr(wrapper, 'component-input');
   expect(inputComponent.length).toBe(1);
 });
@@ -23,7 +31,7 @@ describe('state controlled input field', () => {
   beforeEach(() => {
     mockSetCurrentGuess.mockClear();
     React.useState = jest.fn(() => ['', mockSetCurrentGuess]);
-    wrapper = setup();
+    wrapper = setup({});
   });
 
   test('state updates with value of input box upon change', () => {
