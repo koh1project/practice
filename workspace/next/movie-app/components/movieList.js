@@ -3,7 +3,7 @@ import React from 'react'
 class MovieList extends React.Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div className="col-lg-4 col-md-6 mb-4">
           <div className="card h-100">
             <a href="#"><img className="card-img-top" src="http://placehold.it/700x400" alt="" /></a>
@@ -99,7 +99,7 @@ class MovieList extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
