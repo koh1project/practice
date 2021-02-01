@@ -4,6 +4,7 @@ import Navbar from '../components/navbar';
 import SideMenu from '../components/sideMenu';
 import Carousel from '../components/carousel';
 import MovieList from '../components/movieList';
+import Footer from '../components/footer';
 
 
 const Home = () => (
@@ -29,11 +30,7 @@ const Home = () => (
         </div>
       </div>
     </div>
-    <footer className="py-5 bg-dark">
-      <div className="container">
-        <p className="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-      </div>
-    </footer>
+    <Footer />
 
   </div>
 );
