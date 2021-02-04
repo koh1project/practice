@@ -8,24 +8,7 @@ import Footer from '../components/footer';
 
 import { getMovies } from '../actions';
 
-const Home = () => {
-
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-
-    const fetchData = async  () => {
-      const resMovies = await getMovies();
-      setMovies(resMovies);
-    };
-
-    fetchData();
-
-    // getMovies().then((movies) => {
-    //   setMovies(movies);
-    // });
-  }, []);
-
+const Home = (props) => {
   return (
     <div>
       <Head>
@@ -45,7 +28,7 @@ const Home = () => {
             <div className="col-lg-9">
               <Carousel />
               <div className="row">
-                <MovieList movies={movies} />
+                <MovieList movies={props.movies} />
               </div>
             </div>
           </div>
@@ -63,4 +46,8 @@ const Home = () => {
   )
 };
 
+Home.getInitialProps = async ()  => {
+  const movies = await getMovies();
+  return  {movies};
+}
 export default Home;
