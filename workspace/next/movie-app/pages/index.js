@@ -23,7 +23,7 @@ const Home = (props) => {
           </div>
         </div>
       </div>
-      
+
 
       <style jsx>{`
         .home-page {
