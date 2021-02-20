@@ -27,7 +27,7 @@ export default function Home ({ allPostsData }) {
     </Layout>
   )
 }
-
+//SSR
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
   return {
